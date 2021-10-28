@@ -37,7 +37,12 @@ namespace Factura2021_1400.Controladores
 
             if (esValido)
             {
-                MessageBox.Show("Usuario Correcto");
+                //MessageBox.Show("Usuario Correcto");
+
+                MenuView menu = new MenuView();
+                vista.Hide();
+                menu.Show();
+
             }
             else
             {
