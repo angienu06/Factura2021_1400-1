@@ -61,6 +61,7 @@ namespace Factura2021_1400.Vistas
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(217, 20);
             this.EmailTextBox.TabIndex = 2;
+            this.EmailTextBox.Text = "nahumcasco@gmail.com";
             // 
             // ClaveTextBox
             // 
@@ -69,6 +70,7 @@ namespace Factura2021_1400.Vistas
             this.ClaveTextBox.PasswordChar = '*';
             this.ClaveTextBox.Size = new System.Drawing.Size(217, 20);
             this.ClaveTextBox.TabIndex = 3;
+            this.ClaveTextBox.Text = "1234";
             // 
             // AceptarButton
             // 
