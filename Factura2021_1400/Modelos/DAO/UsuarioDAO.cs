@@ -29,6 +29,7 @@ namespace Factura2021_1400.Modelos.DAO
                 comando.Parameters.Add("@Email", SqlDbType.NVarChar, 50).Value = user.Email;
                 comando.Parameters.Add("@Clave", SqlDbType.NVarChar, 100).Value = user.Clave;
                 valido = Convert.ToBoolean(comando.ExecuteScalar());
+                MiConexion.Close();
             }
             catch (Exception)
             {
@@ -54,9 +55,9 @@ namespace Factura2021_1400.Modelos.DAO
                 comando.Parameters.Add("@EsAdministrador", SqlDbType.Bit).Value = user.EsAdministrador;
                 comando.ExecuteNonQuery();
                 return true;
-
+                MiConexion.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -74,6 +75,84 @@ namespace Factura2021_1400.Modelos.DAO
             return sb.ToString();
         }
 
+        public DataTable GetUsuarios()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.Append(" SELECT * FROM USUARIO ");
+
+                comando.Connection = MiConexion;
+                MiConexion.Open();
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = sql.ToString();
+                SqlDataReader dr = comando.ExecuteReader();
+                dt.Load(dr);
+                MiConexion.Close();
+            }
+            catch (Exception)
+            {
+            }
+            return dt;
+        }
+    
+        public bool ActualizarUsuario(Usuario user)
+        {
+            bool modifico = false;
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.Append(" UPDATE USUARIO ");
+                sql.Append(" SET NOMBRE = @Nombre, EMAIL = @Email, CLAVE = @Clave, ESADMINISTRADOR = @EsAdministrador  ");
+                sql.Append(" WHERE ID = @Id; ");
+
+                comando.Connection = MiConexion;
+                MiConexion.Open();
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = sql.ToString();
+                comando.Parameters.Add("@Id", SqlDbType.Int).Value = user.Id;
+                comando.Parameters.Add("@Nombre", SqlDbType.NVarChar, 80).Value = user.Nombre;
+                comando.Parameters.Add("@Email", SqlDbType.NVarChar, 50).Value = user.Email;
+                comando.Parameters.Add("@Clave", SqlDbType.NVarChar, 80).Value = EncriptarClave(user.Clave);
+                comando.Parameters.Add("@EsAdministrador", SqlDbType.Bit).Value = user.EsAdministrador;
+                comando.ExecuteNonQuery();
+                modifico = true;
+                MiConexion.Close();
+                  
+            }
+            catch (Exception ex)
+            {
+                return modifico ;
+            }
+            return modifico;
+        }
+    
+        public bool EliminarUsuario(int id)
+        {
+            bool modifico = false;
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.Append(" DELETE FROM USUARIO ");
+                sql.Append(" WHERE ID = @Id; ");
+
+                comando.Connection = MiConexion;
+                MiConexion.Open();
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = sql.ToString();
+                comando.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                comando.ExecuteNonQuery();
+                modifico = true;
+                MiConexion.Close();
+
+            }
+            catch (Exception ex)
+            {
+                return modifico;
+            }
+            return modifico;
+        }
 
     }
 }

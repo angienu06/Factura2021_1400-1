@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Factura2021_1400.Controladores;
 
 namespace Factura2021_1400.Vistas
 {
@@ -15,6 +16,7 @@ namespace Factura2021_1400.Vistas
         public ClientesView()
         {
             InitializeComponent();
+            ClienteController controlador = new ClienteController(this);
         }
     }
 }
