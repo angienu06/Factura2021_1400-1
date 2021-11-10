@@ -41,6 +41,9 @@ namespace Factura2021_1400.Controladores
 
                 MenuView menu = new MenuView();
                 vista.Hide();
+
+                menu.EmailUsuario = user.Email;
+
                 menu.Show();
 
             }

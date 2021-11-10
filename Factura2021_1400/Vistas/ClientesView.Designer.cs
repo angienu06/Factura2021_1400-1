@@ -137,6 +137,7 @@ namespace Factura2021_1400.Vistas
             this.ImagenPictureBox.Location = new System.Drawing.Point(430, 31);
             this.ImagenPictureBox.Name = "ImagenPictureBox";
             this.ImagenPictureBox.Size = new System.Drawing.Size(300, 238);
+            this.ImagenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ImagenPictureBox.TabIndex = 10;
             this.ImagenPictureBox.TabStop = false;
             // 

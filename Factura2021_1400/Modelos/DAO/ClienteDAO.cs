@@ -30,7 +30,14 @@ namespace Factura2021_1400.Modelos.DAO
                 comando.Parameters.Add("@Nombre", SqlDbType.NVarChar, 70).Value = cliente.Nombre;
                 comando.Parameters.Add("@Email", SqlDbType.NVarChar, 50).Value = cliente.Email;
                 comando.Parameters.Add("@Direccion", SqlDbType.NVarChar, 100).Value = cliente.Direccion;
-                comando.Parameters.Add("@Foto", SqlDbType.Image).Value = cliente.Foto;
+                if (cliente.Foto != null)
+                {
+                    comando.Parameters.Add("@Foto", SqlDbType.Image).Value = cliente.Foto;
+                }
+                else
+                {
+                    comando.Parameters.Add("@Foto", SqlDbType.Image).Value = DBNull.Value;
+                }
                 comando.ExecuteNonQuery();
                 inserto = true;
                 MiConexion.Close();
@@ -121,5 +128,38 @@ namespace Factura2021_1400.Modelos.DAO
             }
             return modifico;
         }
+    
+        public byte[] SeleccionarImagenCliente(int id)
+        {
+            byte[] _imagen = new byte[0];
+            try
+            {
+                StringBuilder sql = new StringBuilder();
+                sql.Append(" SELECT FOTO FROM CLIENTE ");
+                sql.Append(" WHERE ID = @Id; ");
+
+                comando.Connection = MiConexion;
+                MiConexion.Open();
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = sql.ToString();
+                comando.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                SqlDataReader dr = comando.ExecuteReader();
+
+                if (dr.Read())
+                {
+                    _imagen = (byte[])dr["FOTO"];
+                }
+
+                MiConexion.Close();
+
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return _imagen;
+        }
+    
+    
     }
 }
