@@ -59,9 +59,9 @@ namespace Factura2021_1400.Vistas
             this.SubtotalTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.GuardarButton = new System.Windows.Forms.Button();
-            this.NuevaButton = new System.Windows.Forms.Button();
             this.CancelarButton = new System.Windows.Forms.Button();
+            this.NuevaButton = new System.Windows.Forms.Button();
+            this.GuardarButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -346,14 +346,14 @@ namespace Factura2021_1400.Vistas
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             // 
-            // GuardarButton
+            // CancelarButton
             // 
-            this.GuardarButton.Location = new System.Drawing.Point(150, 12);
-            this.GuardarButton.Name = "GuardarButton";
-            this.GuardarButton.Size = new System.Drawing.Size(106, 29);
-            this.GuardarButton.TabIndex = 0;
-            this.GuardarButton.Text = "Guardar";
-            this.GuardarButton.UseVisualStyleBackColor = true;
+            this.CancelarButton.Location = new System.Drawing.Point(273, 12);
+            this.CancelarButton.Name = "CancelarButton";
+            this.CancelarButton.Size = new System.Drawing.Size(109, 29);
+            this.CancelarButton.TabIndex = 2;
+            this.CancelarButton.Text = "Cancelar";
+            this.CancelarButton.UseVisualStyleBackColor = true;
             // 
             // NuevaButton
             // 
@@ -364,14 +364,14 @@ namespace Factura2021_1400.Vistas
             this.NuevaButton.Text = "Nueva";
             this.NuevaButton.UseVisualStyleBackColor = true;
             // 
-            // CancelarButton
+            // GuardarButton
             // 
-            this.CancelarButton.Location = new System.Drawing.Point(273, 12);
-            this.CancelarButton.Name = "CancelarButton";
-            this.CancelarButton.Size = new System.Drawing.Size(109, 29);
-            this.CancelarButton.TabIndex = 2;
-            this.CancelarButton.Text = "Cancelar";
-            this.CancelarButton.UseVisualStyleBackColor = true;
+            this.GuardarButton.Location = new System.Drawing.Point(150, 12);
+            this.GuardarButton.Name = "GuardarButton";
+            this.GuardarButton.Size = new System.Drawing.Size(106, 29);
+            this.GuardarButton.TabIndex = 0;
+            this.GuardarButton.Text = "Guardar";
+            this.GuardarButton.UseVisualStyleBackColor = true;
             // 
             // FacturaView
             // 
@@ -432,8 +432,8 @@ namespace Factura2021_1400.Vistas
         public System.Windows.Forms.TextBox DescuentosTextBox;
         public System.Windows.Forms.TextBox SubtotalTextBox;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button GuardarButton;
-        private System.Windows.Forms.Button CancelarButton;
-        private System.Windows.Forms.Button NuevaButton;
+        public System.Windows.Forms.Button GuardarButton;
+        public System.Windows.Forms.Button CancelarButton;
+        public System.Windows.Forms.Button NuevaButton;
     }
 }

@@ -67,7 +67,6 @@ namespace Factura2021_1400.Vistas
             {
                 vistaFactura = new FacturaView();
                 vistaFactura.MdiParent = this;
-                vistaFactura.EmailUsuario = EmailUsuario;
                 vistaFactura.FormClosed += VistaFactura_FormClosed;
                 vistaFactura.Show();
             }

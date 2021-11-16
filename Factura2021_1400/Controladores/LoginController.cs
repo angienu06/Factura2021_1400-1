@@ -20,6 +20,7 @@ namespace Factura2021_1400.Controladores
             vista = view;
 
             vista.AceptarButton.Click += new EventHandler(ValidarUsuario);
+            
         }
 
         private void ValidarUsuario(object serder, EventArgs e)
@@ -37,12 +38,11 @@ namespace Factura2021_1400.Controladores
 
             if (esValido)
             {
-                //MessageBox.Show("Usuario Correcto");
-
                 MenuView menu = new MenuView();
                 vista.Hide();
-
-                menu.EmailUsuario = user.Email;
+                System.Security.Principal.GenericIdentity identidad = new System.Security.Principal.GenericIdentity(vista.EmailTextBox.Text);
+                System.Security.Principal.GenericPrincipal principal = new System.Security.Principal.GenericPrincipal(identidad, null);
+                System.Threading.Thread.CurrentPrincipal = principal;
 
                 menu.Show();
 

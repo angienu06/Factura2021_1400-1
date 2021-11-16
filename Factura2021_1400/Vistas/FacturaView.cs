@@ -8,9 +8,7 @@ namespace Factura2021_1400.Vistas
         public FacturaView()
         {
             InitializeComponent();
-            string usuario = EmailUsuario;
-            FacturaController controlador = new FacturaController(this, usuario);
+            FacturaController controlador = new FacturaController(this);
         }
-        public string EmailUsuario;
     }
 }

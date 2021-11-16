@@ -11,5 +11,6 @@ namespace Factura2021_1400.Modelos.Entidades
         public decimal ISV { get; set; }
         public decimal Descuento { get; set; }
         public decimal Total { get; set; }
+        public int IdUsuario { get; set; }
     }
 }
